@@ -1,0 +1,25 @@
+
+	<div style="font-weight: bold;" >
+		<h2 >Angular JS Application</h2>
+		<br>
+		<br>
+		<div style="margin-left:10%">
+		<h2>Product Detail</h2>	<br>
+		<div>
+		<p>Name:		    {{product.name | uppercase }}</p><br>
+
+		<p>Model:		    {{product.model}}</p><br>
+
+		<p>Year:	            {{product.year}}</p><br>
+
+		<p>Price:		    {{product.price | currency}}</p><br>
+
+		<p>Producer:	    {{product.producer}}</p><br>
+
+		<p>Available:	    {{product.available | currency: "":0}}</p>
+
+		</div>
+		<button type="button" class="btn btn-primary" ><a href="#/mainstore" style="color:white">Back to Main Store</a></button>
+		</div>
+
+	</div>

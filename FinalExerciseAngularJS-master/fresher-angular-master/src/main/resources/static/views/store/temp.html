@@ -1,0 +1,74 @@
+
+<div class="container" ng-controller="MainstoreController">
+
+ <div >
+		
+			<h2 align="left">Add new product </h2>
+			<form name="form" method="post" class="css-form" ng-submit="addProduct()" novalidate >
+				<div class="form-group">
+					<label for="name">Name:</label>
+					<input type="text" class="form-control" id="name" name="name" ng-model="product.name" required>
+				</div>
+				<div class="form-group">
+					<label for="model">Model:</label>
+					<input type="text" class="form-control" id="model" name="model" ng-model="product.model" required>
+				</div>
+				<div class="form-group">
+					<label for="year">Year:</label>
+					<input type="number" class="form-control" id="year" name="year" ng-model="product.year" required>
+				</div>
+				<div class="form-group">
+					<label for="price">Price:</label>
+					<input type="number" class="form-control" id="price" name="price" ng-model="product.price" required>
+				</div>
+				<div class="form-group">
+					<label for="producer">Producer:</label>
+					<input type="text" class="form-control" id="producer" name="producer" ng-model="product.producer" required>
+				</div>
+				<div class="form-group">
+					<label for="available">Available:</label>
+					<input type="number" class="form-control" id="available" name="available" ng-model="product.available" required>
+				</div>
+				<button type="submit" class="btn btn-default" ng-disabled="form.$invalid" >Add Product</button>
+				<button type="button" class="btn btn-default" ng-click="getAll()">Search All</button>
+			</form> <br>
+
+		</div> 
+
+		<div>
+			
+				<h2 align="left">Product List</h2>
+				<table class="table" >
+					<thead>
+						<tr>
+						    <th>Name</th>
+							<th>Model</th>
+							<th>Year</th>
+							<th>Price</th>
+							<th>Producer</th>
+							<th>Availabe</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody ng-repeat="x in products">
+						<tr>
+						    <td><a ng-href="#/mainstore/product/{{x.id}}">{{x.name | uppercase }}</a></td>
+							<td>{{x.model}}</td>
+							<td>{{x.year}}</td>
+							<td>{{x.price | currency}}</td>
+							<td>{{x.producer}}</td>
+							<td>
+							<div><i class="glyphicon glyphicon-plus btn btn-xs btn-success" ng-click="add($index,x.id)"></i>
+								{{x.available | currency: "":0}}
+								<i class="glyphicon glyphicon-minus btn btn-xs btn-warning" ng-click="sub($index,x.id)" ng-disabled="x.available < 1"></i>
+							</div>	
+								</td>
+								<td><i class="glyphicon glyphicon-trash btn btn-xs btn-danger" ng-click="removeProduct($index,x.id)"></i></td>
+							</tr>
+						</tbody>
+					</table>
+			
+		</div>
+
+</div>
+
